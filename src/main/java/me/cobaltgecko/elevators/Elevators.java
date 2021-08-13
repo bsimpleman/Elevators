@@ -1,7 +1,7 @@
 package me.cobaltgecko.elevators;
 
-import me.cobaltgecko.elevators.events.PlayerJumpEvent;
-import me.cobaltgecko.elevators.events.PlayerSneakEvent;
+import me.cobaltgecko.elevators.events.SneakEvent;
+import me.cobaltgecko.elevators.events.JumpEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -13,8 +13,8 @@ public final class Elevators extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         instance = this;
-        getServer().getPluginManager().registerEvents(new PlayerJumpEvent(), instance);
-        getServer().getPluginManager().registerEvents(new PlayerSneakEvent(), instance);
+        getServer().getPluginManager().registerEvents(new JumpEvent(), instance);
+        getServer().getPluginManager().registerEvents(new SneakEvent(), instance);
 
     }
 
