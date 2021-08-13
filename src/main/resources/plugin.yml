@@ -1,0 +1,6 @@
+name: Elevators
+version: ${project.version}
+main: me.cobaltgecko.elevators.Elevators
+api-version: 1.17
+authors: [ CobaltGecko ]
+description: Elevators for quick vertical movement
