@@ -22,7 +22,9 @@ public class SneakEvent implements Listener {
 
         if (isValidElevator(blockBelowPlayer)) {
             Block blockAbovePlayer = getElevatorBelowPlayer(player);
-            teleportPlayerOntoBlock(player, blockAbovePlayer);
+            if (blockAbovePlayer != null) {
+                teleportPlayerOntoBlock(player, blockAbovePlayer);
+            }
         }
     }
 
@@ -44,7 +46,7 @@ public class SneakEvent implements Listener {
      * @return Block of matching material that is located above the player
      */
     public Block getElevatorBelowPlayer(Player player) {
-        for (int yValue = player.getLocation().getBlockY(); yValue > player.getWorld().getMinHeight(); yValue--) {
+        for (int yValue = player.getLocation().getBlockY() - 2; yValue > player.getWorld().getMinHeight(); yValue--) {
             Location currentLocation = new Location(
                     player.getWorld(),
                     player.getLocation().getBlockX(),
@@ -62,9 +64,9 @@ public class SneakEvent implements Listener {
     public void teleportPlayerOntoBlock(Player player, Block block) {
         Location teleportLocation = new Location (
                 player.getWorld(),
-                block.getX(),
+                player.getLocation().getX(),
                 block.getY() + 1,
-                block.getZ(),
+                player.getLocation().getZ(),
                 player.getLocation().getYaw(),
                 player.getLocation().getPitch());
         player.teleport(teleportLocation);

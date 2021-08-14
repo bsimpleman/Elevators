@@ -23,7 +23,9 @@ public class JumpEvent implements Listener {
 
         if (isValidElevator(blockBelowPlayer)) {
             Block blockAbovePlayer = getBlockAbovePlayer(player);
-            teleportPlayerOntoBlock(player, blockAbovePlayer);
+            if (blockAbovePlayer != null) {
+                teleportPlayerOntoBlock(player, blockAbovePlayer);
+            }
         }
 
     }
@@ -64,9 +66,9 @@ public class JumpEvent implements Listener {
     public void teleportPlayerOntoBlock(Player player, Block block) {
         Location teleportLocation = new Location (
                 player.getWorld(),
-                block.getX(),
+                player.getLocation().getX(),
                 block.getY() + 1,
-                block.getZ(),
+                player.getLocation().getZ(),
                 player.getLocation().getYaw(),
                 player.getLocation().getPitch());
         player.teleport(teleportLocation);

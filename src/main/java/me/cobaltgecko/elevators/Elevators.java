@@ -16,6 +16,9 @@ public final class Elevators extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new JumpEvent(), instance);
         getServer().getPluginManager().registerEvents(new SneakEvent(), instance);
 
+        int pluginId = 12422; // <-- Replace with the id of your plugin!
+        Metrics metrics = new Metrics(this, pluginId);
+
     }
 
     @Override
